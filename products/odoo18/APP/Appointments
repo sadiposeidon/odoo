@@ -1,0 +1,9 @@
+Odoo 18-də Appointments modulu qısaca belədir:
+
+Müştəri görüşlərinin idarəsi: Müştərilər və ya istifadəçilər üçün görüşləri təyin etmək və planlamaq üçün istifadə olunur.
+Onlayn rezervasiya: Müştərilər özləri uyğun vaxt seçə bilər (onlayn booking).
+Avtomatik xatırlatmalar: SMS və e-poçt vasitəsilə görüşdən əvvəl bildiriş göndərir.
+Görüş növləri: Müxtəlif xidmət və ya departamentlər üçün fərqli görüş kateqoriyaları yaradıla bilər.
+Sinxronizasiya: Calendar modul və digər Odoo modulları ilə inteqrasiya olunur.
+
+Qısaca: Appointments Odoo-da müştəri görüşlərini sadələşdirən və avtomatlaşdıran modul kimidir.

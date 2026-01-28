@@ -1,0 +1,9 @@
+Odoo 18-də Dashboards modulu qısaca belədir:
+
+Vizual idarəetmə paneli: Müxtəlif modullardan (Sales, CRM, Inventory, Accounting və s.) məlumatları bir yerdə vizuallaşdırır.
+Qrafiklər və göstəricilər: Chart, KPI, kanban, pivot və digər vizual elementlərlə məlumatların analizini asanlaşdırır.
+Real vaxt yenilənmə: Məlumatlar avtomatik olaraq yenilənir, istifadəçi anında vəziyyəti görə bilir.
+Fərdiləşdirmə: Hər istifadəçi öz dashboard-unı öz prioritetlərinə uyğun qura və bölmələri əlavə edə bilər.
+İnteqrasiya: Digər Odoo modulları ilə tam inteqrasiya olunur, məsələn, satış performansı, müştəri sorğuları, inventar vəziyyəti bir paneldə göstərilə bilər.
+
+Qısaca: Dashboards Odoo-da məlumatları vizual, real vaxt və mərkəzləşdirilmiş şəkildə idarə etməyə imkan verən moduldur.

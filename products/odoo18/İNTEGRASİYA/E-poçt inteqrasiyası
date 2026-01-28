@@ -1,0 +1,26 @@
+Odoo 18-də E-poçt inteqrasiyası modulu (Email Integration) qısaca belə işləyir:
+
+Əsas məqsəd:
+E-poçtları Odoo daxilində göndərmək, qəbul etmək və izləmək.
+Müştəri və komanda üzvləri ilə ünsiyyəti mərkəzləşdirmək.
+
+Əsas xüsusiyyətlər:
+Gələn və gedən e-poçtlar:
+Odoo hər bir modul (CRM, Sales, Helpdesk) üçün e-poçt göndərmək və qəbul etmək imkanı verir.
+Məsələn, müştəri sorğusu gələndə Helpdesk modulunda avtomatik qeyd yaradır.
+
+Multiple Accounts (Çoxlu hesab):
+Gmail, Outlook və digər POP/IMAP hesabları ilə inteqrasiya.
+Eyni anda bir neçə e-poçt hesabını idarə etmək mümkündür.
+
+Avtomatik izləmə və loglama:
+Göndərilən və alınan mesajlar avtomatik olaraq əlaqəli müştəri və ya sifariş kartına əlavə olunur.
+
+Şablonlar və avtomatlaşdırma:
+E-poçt şablonları ilə tez cavab göndərmək.
+Satış sifarişi və ya faktura göndərilərkən avtomatik mesaj yaratmaq.
+
+Discuss ilə inteqrasiya:
+E-poçt mesajları Odoo içində Discuss modulunda da görünə bilər.
+
+Qısaca: Odoo 18 E-poçt inteqrasiyası, biznes ünsiyyətini mərkəzləşdirir və iş proseslərini avtomatlaşdırır.

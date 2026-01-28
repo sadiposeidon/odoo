@@ -1,0 +1,30 @@
+Odoo 18 (ümumiyyətlə Odoo ORM-də) 3 əsas model növü var.
+
+
+1. Standart Model (models.Model)
+2. Transient Model (models.TransientModel)
+3. Abstract Model (models.AbstractModel)
+
+
+-- Standart Model (models.Model)
+Ən çox istifadə olunan model növü9
+Məlumat database-də daimi saxlanılır
+CRUD əməliyyatları var
+Biznes obyektləri üçün istifadə olunur
+Nə vaxt?: Faktura, müştəri, məhsul, sifariş və s. kimi davamlı məlumatlar üçün
+
+
+-- Transient Model (models.TransientModel)
+Müvəqqəti (temporary) model
+Məlumat müvəqqəti saxlanılır
+Odoo avtomatik olaraq müəyyən vaxtdan sonra silir
+Adətən wizard-lər üçün istifadə olunur
+Nə vaxt?: İstifadəçi bir əməliyyat edir, form doldurur, təsdiqləyir – amma bu məlumat uzunmüddətli lazım deyil
+
+
+-- Abstract Model (models.AbstractModel)
+Database-də table YOXDUR
+Öz-özlüyündə data saxlamır
+Digər modellər üçün base / mixin rolunu oynayır
+Kodun təkrarını azaltmaq üçün istifadə olunur
+Nə vaxt?: Bir neçə modeldə eyni field və metodlar varsa

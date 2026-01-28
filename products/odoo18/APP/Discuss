@@ -1,0 +1,9 @@
+Odoo 18-də “Discuss” modulu əsasən daxili mesajlaşma və əməkdaşlıq üçün istifadə olunur.
+
+Qısaca:
+Team chat və mesajlaşma: Komanda üzvləri bir-biri ilə real vaxtda ünsiyyət qura bilər.
+Qrup və kanal sistemi: Layihələr, departamentlər və mövzular üzrə kanallar yaradıla bilər.
+Qeyd və bildirişlər: Sistem avtomatik olaraq əməliyyatlar (məsələn, satış sifarişi yaradıldıqda) haqqında mesaj göndərə bilər.
+E-poçt inteqrasiyası: E-poçt mesajlarını Odoo daxilində izləmək mümkündür.
+
+Yəni, “Discuss” Odoo içində Slack/Teams kimi daxili kommunikasiya vasitəsidir.

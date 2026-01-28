@@ -1,0 +1,17 @@
+Odoo 18-də WhatsApp inteqrasiyası mümkündür, amma bunu “out-of-the-box” (əsas paketdə) tam olaraq görə bilməzsən — adətən əlavə modul və ya üçüncü tərəf xidmətləri vasitəsilə həyata keçirilir.
+
+Qısaca necə işləyir:
+Rəsmi və ya üçüncü tərəf modul:
+Odoo App Store-da “WhatsApp” üçün modullar var.
+Bu modullar Odoo-da müştəri ilə chat, bildiriş göndərmə, avtomatik mesaj kimi funksiyaları təmin edir.
+
+API vasitəsilə bağlantı:
+WhatsApp Business API istifadə olunur.
+Odoo bu API ilə əlaqə yaradaraq mesajları göndərə və qəbul edə bilir.
+
+İşləmə sahələri:
+Satış və CRM: Müştəri ilə WhatsApp üzərindən əlaqə.
+Order/Invoice bildirişləri: Avtomatik mesaj göndərmək.
+Support/Helpdesk: Müştəri sorğularını WhatsApp üzərindən idarə etmək.
+
+Qeyd: WhatsApp inteqrasiyası API üçün və modul üçün ödəniş tələb oluna bilər.

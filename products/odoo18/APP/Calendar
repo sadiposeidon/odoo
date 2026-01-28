@@ -1,0 +1,9 @@
+Odoo 18-də Calendar modulu qısaca belədir:
+
+Gündəlik və görüşlərin idarəsi: İşçi və ya komanda üçün görüşləri, tapşırıqları və tədbirləri planlamağa imkan verir.
+Fərdi və qrup görünüşü: Fərdi istifadəçi və ya komanda üzrə günlük, həftəlik, aylıq görünüş.
+Təkrarlanan tədbirlər: Hər həftə və ya ay təkrarlanan görüşləri avtomatik yaratmaq mümkündür.
+Sinxronizasiya: Outlook, Google Calendar kimi xarici təqvimlərlə sinxronizasiya.
+Reminder və bildirişlər: Tədbirdən əvvəl avtomatik bildiriş göndərir.
+
+Qısaca desək, Calendar Odoo içində görüşləri və planları idarə etmək üçün inteqrasiya olunmuş təqvimdir.
