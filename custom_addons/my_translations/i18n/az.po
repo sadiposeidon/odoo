@@ -1,0 +1,8 @@
+msgid "Future"
+msgstr "İn..."
+
+msgid "Congratulations"
+msgstr "ooo"
+
+msgid "Cancel"
+msgstr "Ləğv et"
