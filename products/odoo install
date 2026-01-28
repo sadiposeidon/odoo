@@ -1,0 +1,184 @@
+sudo apt install gdebi
+sudo apt install postgresql
+sudo apt install pgadmin4
+
+sudo snap install gdebi
+sudo snap install postgresql
+sudo snap install pgadmin4
+
+gdebi -v
+postgresql -v
+pgadmin4 -v
+
+sudo apt-get install fontconfig ttf-mscorefonts-installer
+sudo apt-get install xfonts-75dpi xfonts-100dpi
+
+sudo gdebi -n odoo_18.0+e.20260126_all.deb
+
+
+sudo -u postgres psql
+psql -U postgres -d odoo_db
+CREATE USER odoo18 WITH PASSWORD 'admin123';
+CREATE DATABASE odoo_db WITH OWNER odoo18;
+GRANT ALL PRIVILEGES ON DATABASE odoo_db TO odoo18;
+\q
+exit
+
+----------------------
+-- PostgreSQL terminalına keç
+sudo -u postgres psql
+
+-- Mövcud user-ları yoxla
+\du
+
+-- Mövcud database-ləri yoxla
+\l
+
+-- Database-i sil
+DROP DATABASE IF EXISTS odoo_db;
+
+-- İstifadəçini sil
+DROP USER IF EXISTS odoo;
+
+-- Parolu dəyişmək (qeyd linux user odoo ile ayaqa qalxirsa ad da user adi da odoo olmalidi)
+ALTER USER odoo WITH PASSWORD '123456';
+
+-- və yaxud sudo nano /etc/postgresql/16/main/pg_hba.conf faylinda all olan yerde peer et md5
+
+-- İstifadəçini yarat:
+CREATE USER odoo WITH PASSWORD '123456';
+
+-- Database yarat
+CREATE DATABASE odoo_db WITH OWNER odoo;
+
+-- Database üzərində bütün icazələri ver
+GRANT ALL PRIVILEGES ON DATABASE odoo_db TO odoo;
+
+-- Test etmək
+psql -U odoo -d odoo_db -h localhost -W
+----------------------
+sudo nano /etc/odoo.conf
+
+[options]
+; PostgreSQL parametrləri
+db_host = False
+db_port = False
+db_user = odoo
+db_password = 123456
+db_name = odoo_db
+
+; Odoo admin parolu
+admin_passwd = admin123
+
+; Tövsiyə olunan əlavə parametrlər
+default_productivity_apps = True
+
+
+;addons_path = /usr/lib/python3/dist-packages/odoo/addons,/home/odoo/custom_addons
+addons_path = /usr/lib/python3/dist-packages/odoo/addons
+logfile = /var/log/odoo.log
+-------------------------
+sudo systemctl restart odoo
+sudo systemctl restart postgresql
+
+
+----------------------
+tar -xvzf navicat*.tar.gz
+cd navicat
+./navicat
+----------------------
+
+
+snap list | grep pgadmin4
+sudo snap remove pgadmin4
+hash -r
+dpkg -l | grep odoo
+
+silek
+sudo apt purge odoo -y
+sudo apt autoremove -y
+
+sudo rm -rf /opt/odoo
+sudo rm -rf /var/lib/odoo
+sudo rm -rf /etc/odoo
+
+sudo systemctl stop odoo.service
+sudo systemctl disable odoo.service
+sudo rm /etc/systemd/system/odoo.service
+sudo systemctl daemon-reload
+
+
+----------------
+
+Binar fayl						/usr/bin/odoo (/usr/bin/odoo-bin əvəzinə symlink)
+Konfiq faylı					/etc/odoo/odoo.conf
+Addons							/usr/lib/python3/dist-packages/odoo/addons
+Local user addons (optional)	/var/lib/odoo/.local/share/Odoo/addons/18.0
+/opt/odoo yalnız source install üçün istifadə olunur, .deb quraşdırmada yoxdur.
+
+
+Tövsiyə: system user yaratmaq
+Odoo üçün ayrı user yaratmaq təhlükəsizlik üçün vacibdir:
+sudo adduser --system --home=/var/lib/odoo --group odoo
+sudo mkdir -p /var/lib/odoo/.local/share/Odoo/addons
+sudo chown -R odoo:odoo /var/lib/odoo
+
+
+Systemd service ilə idarəetmə
+.deb quraşdırması avtomatik systemd service yaradır: /etc/systemd/system/odoo.service
+Servisi dayandırmaq -> sudo systemctl stop odoo
+
+
+Developer mode ilə run (auto-reload)
+Systemd service dayandırılıb, root əvəzinə odoo user ilə run
+sudo -u odoo odoo --config /etc/odoo/odoo.conf --http-port=8090 --dev=all
+Əgər port conflict olmadan paralel run istəyirsə (fərqli port)
+sudo -u odoo odoo --config /etc/odoo/odoo.conf -i base --http-port=8090 --dev=all
+-i base → Odoo-nun əsas base modulunu database-ə quraşdırır
+--dev=all → developer mode
+--http-port=8090 → brauzerdə açmaq üçün port
+
+-- Addons path
+Əgər əlavə addons istifadə edirsənsə, onları da install etmək olar:
+sudo -u odoo odoo --config /etc/odoo/odoo.conf -i base,web,crm,sale --http-port=8090 --dev=all
+
+------------------------
+/usr/lib/python3/dist-packages/odoo
+grep -R "İnşallah" . --include="*.po"
+-R → rekursiv (bütün qovluqlar üzrə axtarır)
+-l → yalnız fayl adlarını çıxarır
+
+cd /usr/lib/python3/dist-packages/odoo
+find . -type f -name "az.po"
+-type f → yalnız faylları göstərir
+-name "az.po" → adı az.po olan faylları axtarır
+
+-------------------------
+
+mkdir -p /home/odoo/custom_addons/my_translations/i18n
+sudo chown -R odoo:odoo /home/odoo/custom_addons
+sudo chmod -R 755 /home/odoo/custom_addons
+touch /home/odoo/custom_addons/my_translations/__init__.py
+
+chown -R odoo:odoo vacibdir, çünki sən Odoo serverini odoo istifadəçisi ilə işlədirsən.
+
+
+sudo nano /etc/odoo/odoo.conf
+addons_path = /usr/lib/python3/dist-packages/odoo/addons,/home/odoo/custom_addons
+
+-- Modul fayllarını əlavə et
+# /home/odoo/custom_addons/my_translations/__manifest__.py
+{
+    'name': 'My Custom Translations',
+    'version': '1.0',
+    'category': 'Localization',
+    'summary': 'Custom AZ translations to override default translations',
+    'depends': ['sale_subscription', 'mail', 'project', 'industry_fsm'],
+    'data': [],
+    'installable': True,
+    'auto_install': True,
+}
+
+
+sudo -u odoo odoo --config /etc/odoo/odoo.conf -i base,my_translations --http-port=8090 --dev=all
+

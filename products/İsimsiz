@@ -1,0 +1,211 @@
+➡️ shell (terminal ayarları) və konfiqurasiya
+.bashrc : terminal açılarkən işləyən config faylı
+source ~/.bashrc : config-i dərhal tətbiq edir (fərq: restart yoxdur)
+
+
+➡️ internetdən fayl yükləmə
+curl : data/API üçün (fərq: çevik, header, POST)
+wget : fayl üçün (fərq: avtomatik, recursive)
+
+
+➡️ echo (ekrana çap) və sistem dəyişənləri
+echo "Hi, Developer!" : ekrana mətn yazır
+echo "$(date +%d.%m.%Y)" : cari tarix
+echo "$(date +%H:%M:%S)" : cari vaxt
+echo "$HOME" : istifadəçinin home qovluğu
+echo "$PATH" : executable yolların siyahısı
+
+
+➡️ İcazələr (permissions)
+chmod +x file.sh : icra icazəsi verir
+r : oxu | w : yaz | x : icra
+
+
+➡️ Arxiv & Sıxılma (backup)
+.tar : arxiv (fərq: sıxılmır)
+.gz : gzip sıxma (fərq: ölçünü azaldır)
+
+
+➡️ tar (arxiv idarəsi)
+tar xzf document.tar.gz : arxivi açır (fərq: x - extract|açmaq)
+tar czf backup.tar.gz dir : arxiv yaradır (fərq: c - create|yaratmaq)
+
+
+➡️ systemctl (servis idarəsi)
+start : indi işə salır
+enable : boot zamanı işə salır (fərq: indi vs avtomatik)
+stop : dayandırır
+restart : yenidən başladır
+status : vəziyyəti göstərir
+
+
+➡️ ls (fayl siyahılama)
+ls : sadə siyahı
+ls -l : detallı (fərq: icazələr, owner)
+ls -a : gizli fayllar
+ls -lh : oxunaqlı ölçü
+ls -R : recursive (alt qovluqlarla) siyahı
+
+
+➡️ tree (struktur baxışı)
+tree : qovluqları vizual göstərir
+(fərq: ls -R mətn, tree ağacdır)
+
+
+➡️ proseslər & monitorinq
+top : canlı proses monitoru
+htop : daha rahat vizual (quraşdırılıbsa)
+ps -ef : bütün proseslər detalı ilə
+kill PID : prosesi dayandırır
+kill -9 PID : zorla dayandırır
+pkill name : adı üzrə prosesi dayandırır
+jobs : terminalda background prosesləri göstərir
+fg %1 : background prosesini foreground-a gətirir
+clear : terminal təmizləyir
+reboot : sistemi yenidən başladır
+which python : path göstərir
+watch -n 2 df -h : komandayı təkrarlayır (hər 2 saniyə)
+
+
+➡️ şəbəkə & ip
+ip a : IP ünvanlar
+ip r : routing cədvəli
+ping google.com : əlaqəni test edir
+ss -tulpn : açıq portlar və proseslər
+netstat -tulnp : köhnə üsul, port/proses yoxlama
+curl ifconfig.me : public IP
+
+
+➡️ paket idarəsi (apt / yum)
+apt search nginx : paket axtarır
+sudo apt install package : quraşdırır
+sudo apt remove package : silir
+sudo apt purge package : config-larla birlikdə silir
+sudo apt autoremove : lazımsız paketləri təmizləyir
+sudo apt update : paket siyahısını yeniləyir
+
+
+➡️ fayl əməliyyatları (əsas)
+mkdir : qovluq yaradır
+touch : boş fayl yaradır
+cp : kopyalayır
+mv : köçürür / ad dəyişir
+pwd : cari qovluq
+cat : fayl oxuyur
+less file.txt : böyük faylları oxumaq
+head -n 20 file.txt : baş 20 sətri göstərir
+tail -f /var/log/nginx/error.log : log faylını canlı izləyir
+cat file.txt : faylı göstərir
+nano file.txt : terminalda redaktə
+vim file.txt : inkişaf etmiş redaktə
+sort file.txt : sıralayır
+uniq file.txt : təkrarları silir
+wc -l file.txt : sətir sayır
+
+
+➡️ silmə (diqqətli ol)
+rm : fayl silir
+rm -r : qovluq silir
+
+
+➡️ find (fayl axtarışı)
+find -name "*o*" : bütün qovluq və fayllar
+find -type f -name "*o*" : yalnız fayllar
+find -type d -name "*o*" : yalnız qovluqlar
+
+
+➡️ grep (mətn axtarışı)
+grep "salam" f.txt : tək faylda axtarır
+grep -r "main" . : bütün qovluqlarda axtarır
+history | grep docker : arxiv komandalarda axtarır
+grep -R "İnşallah" . --include="*.po"
+
+
+➡️ disk & sistem məlumatları
+df -h : disk doluluğu (oxunaqlı ölçü)
+du -sh dir : qovluğun ölçüsü
+free -h : RAM istifadəsi
+uptime : sistem nə qədər işləyir
+whoami : cari istifadəçi
+id : istifadəçi ID və qruplar
+groups : istifadəçinin qrupları
+
+
+➡️ ssh (secure shell) & server işləri
+ssh user@ip : uzaq serverə qoşulur
+scp file.txt user@server:/path : serverə fayl köçürür (tam tərsi də olur)
+rsync -av dir/ server:/backup/ : sinxronizasiya / backup
+
+
+➡️ sudo (admin səlahiyyəti - komandanı müvəqqəti root kimi işlədir)
+sudo usermod -aG docker $USER : user-i docker qrupuna əlavə edir
+sudo apt update : paket siyahısını yeniləyir
+sudo apt install git : proqram quraşdırır
+sudo systemctl restart docker : docker servisini restart edir
+sudo chown user:user f.txt : fayl sahibini dəyişir
+sudo chmod 755 dir : icazələri dəyişir
+
+sudo su : root istifadəçisinə keçid edir
+exit : rejimindən çıxır
+
+
+💡 qeyd:
+sudo su güclüdür, amma risklidir.
+Səhv rm -rf kimi komandalar sistemi korlaya bilər.
+Ona görə gündəlik işlərdə sudo <komanda> daha məsləhətdir
+
+
+----------------------------------------------------------------------
+1. serverə qoşulur, sanki o serverin qarşısında oturmusan kimi terminal açır
+ssh root@192.168.1.10
+
+2. ssh-keygen : öz kompüterində key yarat
+(default → Enter, Enter, Enter)
+
+3. nəticə:
+~/.ssh/id_rsa (private key – heç vaxt paylaşma)
+~/.ssh/id_rsa.pub (public key)
+
+4. public key-i serverə göndər
+ssh-copy-id user@server_ip
+
+5. bundan sonra:
+parolsuz login
+daha təhlükəsiz
+automation üçün ideal
+
+6. scp ilə scp sadə və tez fayl köçürmək (SSH üzərindən)
+qeyd: böyük backup üçün ideal deyil
+scp file.txt user@server:/home/user/ 	| Lokal → Server
+scp user@server:/var/log/syslog . 		| Server → Lokal
+
+
+7. rsync – backup / sync (🔥 çox vacib)
+rsync -av dir/ user@server:/backup/
+
+8. nə edir:
+yalnız dəyişən faylları köçürür
+sürətli
+internet kəsilsə davam edə bilir
+
+
+9. Ən çox işlənən flag-lar:
+-a : archive (icazə, owner saxlayır)
+-v : verbose (nə etdiyini göstərir)
+--delete : serverdə artıq faylları silir
+rsync -av --delete dir/ server:/backup/
+
+
+🖥 screen / tmux (daha güclü) – serverdə uzun işlər üçün
+Problem:
+SSH-dan çıxdın → proses dayandı ❌
+
+Həll:
+screen və ya tmux
+
+
+
+
+
+ping -c 3 google.com
+

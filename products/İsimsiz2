@@ -1,0 +1,60 @@
+Docker 			– Container texnologiyası
+Docker Compose 	– Bir neçə container-i birlikdə idarə etməyə imkan verir
+
+
+Image 			– container üçün şablon (resept)
+Container 		– image-dən yaradılan işləyən mühit (yemək)
+docker ps 		– işləyən containerləri göstərmək üçün komanda
+
+
+--name NAME 		: ad verir (fərq: identifikasiya üçün)
+-p xarici:daxili 	: port mapping
+-v xarici:daxili 	: volume mount
+-d 					: background-da işə salır
+--attach / -a 		: qoşulur (fərq: stdout/stderr göstərir)
+
+
+➡️ Docker – Image & Container
+docker pull ubuntu 			: image yükləyir (fərq: yalnız download, işə salmır)
+docker run ubuntu 			: container işə salır (fərq: varsa local, yoxdursa pull edir)
+docker run ubuntu sleep 3 	: 3 saniyə işləyir (fərq: qısa test / bir dəfəlik)
+docker run -it ubuntu 		: interaktiv terminal (fərq: stdin açıq + terminal)
+docker run mongo 			: MongoDB container işə salır
+docker run redis:5 			: Redis 5 container (fərq: version qeyd olunur)
+docker run mysql:latest 	: MySQL son versiya container (fərq: latest tag)
+
+
+cat /etc/os-release 		: OS məlumatı (container içində)
+exit 						: terminaldan çıxmaq
+
+
+docker ps 					: işləyən container-lar
+docker ps -a 				: bütün container-lar (fərq: dayandırılmış da göstərir)
+docker ps --all				: bütün container-lar (fərq: dayandırılmış da göstərir)
+docker container ls -a		: bütün container-lar (fərq: dayandırılmış da göstərir)
+docker container ls --all	: bütün container-lar (fərq: dayandırılmış da göstərir)
+docker stop NAME/ID 		: dayandırır
+docker start NAME/ID 		: işə salır
+docker rm NAME/ID 			: silir
+
+
+docker container logs NAME/ID 	: log-lar
+docker inspect NAME/ID 			: detalı info (fərq: config + metadata)
+
+docker run -it --name sadiq_ubuntu ubuntu 			: interaktiv Ubuntu + ad
+docker stop sadiq_ubuntu 							: dayandırır
+docker start sadiq_ubuntu 							: işə salır
+docker rm e1s2k3o5p234p / docker rm sadiq_ubuntu 	: silir
+
+docker container rm $(docker container ls -aq) 		: bütün container-ları silir
+
+docker images 							: lokal image-lar
+docker image tag sadiq_ubuntu ubuntu 	: image-ə yeni tag verir
+docker run -d ubuntu 					: background-da Ubuntu container
+
+docker container logs sadiq_ubuntu 		: log-ları göstərir
+
+docker run -p çöl_port:iç_port -v çöl_data:iç_data mongo 	: MongoDB + port + volume mapping
+
+docker inspect container_id/container_name 		: container haqqında detalı info
+docker inspect images_id/images_name 			: image haqqında detalı info
